@@ -54,9 +54,11 @@ console.log("Token being sent:", token);
   };
 
   console.log("Payload being sent:", payload);
+  const BASE_URL = "https://swiggy-main-1.onrender.com"
+
 
   try {
-    const res = await fetch("http://localhost:5000/payments/submit", {
+    const res = await fetch(`${BASE_URL}/payments/submit`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -8,6 +8,9 @@ function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const BASE_URL = "https://swiggy-main-1.onrender.com"
+
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -15,7 +18,7 @@ function Login() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/auth/login", {
+      const res = await fetch(`${BASE_URL}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password, role }), // Send role if backend accepts it

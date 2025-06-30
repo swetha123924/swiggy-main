@@ -24,13 +24,14 @@ const token = localStorage.getItem("token");
 console.log("Token before submit:", token);
 const decoded = jwtDecode(token);
 console.log("Decoded token:", decoded);
+const BASE_URL = "https://swiggy-main-1.onrender.com"
 
 
 const handleSubmit = async (e) => {
   e.preventDefault();
 
   try {
-    const res = await fetch("http://localhost:5000/restaurant/add-restaurant", {
+    const res = await fetch(`${BASE_URL}/restaurant/add-restaurant`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

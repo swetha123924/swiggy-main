@@ -14,6 +14,7 @@ export default function AdminPanel() {
   const [showEditMenuItemForm, setShowEditMenuItemForm] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
   const [menuItems, setMenuItems] = useState([]);
+  const BASE_URL = "https://swiggy-main-1.onrender.com"
 
   // Fetch Restaurants
   const fetchRestaurants = async () => {
@@ -24,7 +25,7 @@ export default function AdminPanel() {
     }
 
     try {
-      const res = await fetch(`http://localhost:5000/restaurant/my-restaurants`, {
+      const res = await fetch(`${BASE_URL}/restaurant/my-restaurants`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -44,7 +45,7 @@ export default function AdminPanel() {
     const token = localStorage.getItem("token");
 
     try {
-      const res = await fetch(`http://localhost:5000/restaurant/get-menu-items/${menuTable}`, {
+      const res = await fetch(`${BASE_URL}/restaurant/get-menu-items/${menuTable}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -66,7 +67,7 @@ const handleEditMenuItemSubmit = async (formPayload) => {
 
   try {
     const res = await fetch(
-      `http://localhost:5000/restaurant/edit-menu-item/${formPayload.menu_table}/${formPayload.item_id}`,
+      `${BASE_URL}/restaurant/edit-menu-item/${formPayload.menu_table}/${formPayload.item_id}`,
       {
         method: "PUT",
         headers: {
@@ -107,7 +108,7 @@ const handleDeleteMenuItem = async (formPayload) => {
 
   try {
     const res = await fetch(
-      `http://localhost:5000/restaurant/delete-menu-item/${formPayload.menu_table}/${formPayload.item_id}`,
+      `${BASE_URL}/restaurant/delete-menu-item/${formPayload.menu_table}/${formPayload.item_id}`,
       {
         method: "DELETE",
         headers: {

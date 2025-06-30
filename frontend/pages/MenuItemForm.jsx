@@ -18,6 +18,9 @@ export default function MenuItemForm({
   });
 
   const token = localStorage.getItem("token");
+    const BASE_URL = "https://swiggy-main-1.onrender.com"
+
+
 
   // When existingItem changes → pre-fill form
   useEffect(() => {
@@ -65,7 +68,7 @@ console.log("Payload being submitted:", payload);
 } else {
   // Add mode
   const res = await fetch(
-    `http://localhost:5000/restaurant/${restaurantId}/menu-items`,
+    `${BASE_URL}/restaurant/${restaurantId}/menu-items`,
     {
       method: "POST",
       headers: {

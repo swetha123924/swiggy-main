@@ -4,6 +4,9 @@ import { useNavigate, Link } from "react-router-dom";
 function Register() {
   const [formData, setFormData] = useState({ name: "", email: "", password: "", role: "user" });
   const navigate = useNavigate();
+    const BASE_URL = "https://swiggy-main-1.onrender.com"
+
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -12,7 +15,7 @@ function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:5000/auth/register", {
+      const res = await fetch(`${BASE_URL}/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

@@ -9,6 +9,8 @@ function Dashboard() {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [showOffersOnly, setShowOffersOnly] = useState(false);
+  const BASE_URL = "https://swiggy-main-1.onrender.com"
+
 
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
@@ -17,13 +19,13 @@ function Dashboard() {
   useEffect(() => {
     const fetchMenuItems = async () => {
       try {
-        const resMenu = await fetch("http://localhost:5000/restaurant/restaurant-menu");
+        const resMenu = await fetch(`${BASE_URL}/restaurant/restaurant-menu`);
         const menuData = await resMenu.json();
         console.log(menuData);
         
         
 
-        const resRestaurants = await fetch("http://localhost:5000/restaurant/restaurant-list");
+        const resRestaurants = await fetch(`${BASE_URL}/restaurant/restaurant-list`);
         const restaurantData = await resRestaurants.json();
         console.log(restaurantData);
         
